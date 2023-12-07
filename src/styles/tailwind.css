@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+
+:root {
+  font-family: "Noto Sans", sans-serif;
+}
+
+.input {
+  @apply tracking-wide w-full h-12  border-slate-500 px-3 outline-none border hover:border-pink-500 focus:border-2 focus:border-pink-600;
+}
+
+.btn {
+  @apply text-white tracking-wide text-lg w-full bg-black hover:bg-pink-700 h-[50px] my-3 flex items-center justify-center cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md;
+}
+
+.loginBtn {
+  @apply text-white tracking-wide text-lg w-full bg-black hover:bg-pink-700 h-[50px] my-3 flex items-center justify-center cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md;
+  display: inline-block;
+  transition: all 0.5s;
+}
+
+.loginBtn span {
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.loginBtn span:after {
+  content: "»";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -15px;
+  transition: 0.5s;
+}
+
+.loginBtn:hover span {
+  padding-right: 15px;
+}
+
+.loginBtn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+@tailwind utilities;
