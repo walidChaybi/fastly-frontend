@@ -4,6 +4,9 @@ import { loginMutation } from "../__generated__/loginMutation";
 import logo from "../../public/logo.png";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { authToken, isLoggedInVar } from "../apollo";
+import { LOCALSTORAGE_TOKEN } from "../constants";
 
 interface ILoginForm {
   email: string;
@@ -27,8 +30,10 @@ function Login() {
     const {
       login: { ok, token },
     } = data;
-    if (ok) {
-      console.log(token);
+    if (ok && token) {
+      localStorage.setItem(LOCALSTORAGE_TOKEN, token);
+      authToken(token);
+      isLoggedInVar(true);
     }
   };
 
@@ -48,6 +53,9 @@ function Login() {
   };
   return (
     <div className=" flex flex-col gap-12 items-center mt-16">
+      <Helmet>
+        <title>Create account | Fastly</title>
+      </Helmet>
       <div className="w-full max-w-screen-sm flex flex-col gap-4 items-center">
         <img height={50} width={200} src={logo} />
         <h2 className="text-xl mt-16 w-full font-light">
