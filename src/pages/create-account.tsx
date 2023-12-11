@@ -37,7 +37,7 @@ export const CreateAccount = () => {
 
   const onCompleted = (data: createAccountMutation) => {
     if (data.createAccount.ok) {
-      navigate("/login");
+      navigate("/");
     }
   };
 
@@ -115,7 +115,7 @@ export const CreateAccount = () => {
           <p>
             Already have an account?{" "}
             <span className="text-indigo-500 font-semibold hover:border-b-2 border-indigo-700 hover:text-indigo-700">
-              <Link to="/login">Log In</Link>
+              <Link to="/">Log In</Link>
             </span>
           </p>
           <p>
