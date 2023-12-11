@@ -1,6 +1,5 @@
 import { gql, useMutation } from "@apollo/client";
-import { Helmet } from "react-helmet-async";
-import logo from "../../public/logo.png";
+import logo from "../assets/logo.png";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
@@ -35,20 +34,20 @@ export const CreateAccount = () => {
         role: UserRole.Client,
       },
     });
+
   const onCompleted = (data: createAccountMutation) => {
-    const {
-      createAccount: { ok },
-    } = data;
-    if (ok) {
+    if (data.createAccount.ok) {
       navigate("/login");
     }
   };
+
   const [createAccountMutation, { loading, data }] = useMutation<
     createAccountMutation,
     createAccountMutationVariables
   >(CREATE_ACCOUNT_MUTATION, {
     onCompleted,
   });
+
   const onSubmit = () => {
     if (!loading) {
       const { email, password, role } = getValues();
@@ -59,11 +58,9 @@ export const CreateAccount = () => {
       });
     }
   };
+
   return (
     <div className=" flex flex-col gap-12 items-center mt-16">
-      <Helmet>
-        <title>Create account | Fastly</title>
-      </Helmet>
       <div className="w-full max-w-screen-sm flex flex-col gap-4 items-center">
         <img height={50} width={200} src={logo} />
         <h2 className="text-xl mt-16 w-full font-light">

@@ -1,10 +1,10 @@
 import { gql, useMutation } from "@apollo/client";
 import { useForm } from "react-hook-form";
 import { loginMutation } from "../__generated__/loginMutation";
-import logo from "../../public/logo.png";
+import { Helmet } from "react-helmet-async";
+import logo from "../assets/logo.png";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { authToken, isLoggedInVar } from "../apollo";
 import { LOCALSTORAGE_TOKEN } from "../constants";
 
@@ -30,9 +30,9 @@ function Login() {
     const {
       login: { ok, token },
     } = data;
-    if (ok && token) {
-      localStorage.setItem(LOCALSTORAGE_TOKEN, token);
-      authToken(token);
+    if (ok) {
+      localStorage.setItem(LOCALSTORAGE_TOKEN, token!);
+      authToken(token!);
       isLoggedInVar(true);
     }
   };
@@ -54,7 +54,7 @@ function Login() {
   return (
     <div className=" flex flex-col gap-12 items-center mt-16">
       <Helmet>
-        <title>Create account | Fastly</title>
+        <title>Login | Fastly</title>
       </Helmet>
       <div className="w-full max-w-screen-sm flex flex-col gap-4 items-center">
         <img height={50} width={200} src={logo} />
