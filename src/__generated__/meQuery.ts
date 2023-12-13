@@ -14,6 +14,7 @@ export interface meQuery_me {
   id: number;
   email: string;
   role: UserRole;
+  verified: boolean;
 }
 
 export interface meQuery {

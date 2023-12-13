@@ -1,26 +1,17 @@
-import { meQuery } from "../__generated__/meQuery";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   Navigate,
 } from "react-router-dom";
-import { gql, useQuery } from "@apollo/client";
 import Restaurants from "../pages/client/restaurants";
 import NotFound from "../pages/404";
-
-const ME_QUERY = gql`
-  query meQuery {
-    me {
-      id
-      email
-      role
-    }
-  }
-`;
+import Header from "../components/Header";
+import { useMe } from "../hooks/useMe";
+import ConfirmEmail from "../pages/user/confirm-email";
 
 export const LoggedInRouter = () => {
-  const { data, loading, error } = useQuery<meQuery>(ME_QUERY);
+  const { data, loading, error } = useMe();
 
   if (loading || error || !data) {
     return (
@@ -39,8 +30,9 @@ export const LoggedInRouter = () => {
           {data.me.role === "Owner" && (
             <Route path="/" element={<Restaurants />}></Route>
           )}
-          <Route path="/*" element={<Navigate to="/" />}></Route>
+          {/* <Route path="/*" element={<Navigate to="/" />}></Route> */}
           <Route path="*" element={<NotFound />}></Route>
+          <Route path="/confirm" element={<ConfirmEmail />}></Route>
         </Routes>
       </Router>
     </div>

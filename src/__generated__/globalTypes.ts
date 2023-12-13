@@ -19,6 +19,10 @@ export interface CreateAccountInput {
   role: UserRole;
 }
 
+export interface VerifyEmailInput {
+  code: string;
+}
+
 export interface loginInput {
   email: string;
   password: string;
