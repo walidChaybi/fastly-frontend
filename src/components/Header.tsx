@@ -10,7 +10,9 @@ function Header() {
     <>
       {!data?.me.verified && (
         <div className="bg-red-500 px-3 py-3 text-center text-slate-200">
-          <span>Please verify your email</span>
+          <Link to="/confirm">
+            <span>Please verify your email</span>
+          </Link>
         </div>
       )}
       <header className="px-4 bg-slate-100 py-4">
