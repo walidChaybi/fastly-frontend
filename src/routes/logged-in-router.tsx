@@ -9,6 +9,7 @@ import NotFound from "../pages/404";
 import Header from "../components/Header";
 import { useMe } from "../hooks/useMe";
 import ConfirmEmail from "../pages/user/confirm-email";
+import EditProfile from "../pages/user/edit-profile";
 
 export const LoggedInRouter = () => {
   const { data, loading, error } = useMe();
@@ -33,6 +34,7 @@ export const LoggedInRouter = () => {
           {/* <Route path="/*" element={<Navigate to="/" />}></Route> */}
           <Route path="*" element={<NotFound />}></Route>
           <Route path="/confirm" element={<ConfirmEmail />}></Route>
+          <Route path="/edit-profile" element={<EditProfile />}></Route>
         </Routes>
       </Router>
     </div>

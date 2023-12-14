@@ -1,7 +1,7 @@
 import { gql, useApolloClient, useMutation } from "@apollo/client";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { verifyEmail } from "../../__generated__/verifyEmail";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useMe } from "../../hooks/useMe";
 
 const VERIFY_EMAIL_MUTATION = gql`

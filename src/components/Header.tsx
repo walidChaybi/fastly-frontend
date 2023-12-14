@@ -17,7 +17,7 @@ function Header() {
         <div className="w-full max-w-screen-xl mx-auto  flex justify-between items-center">
           <img src={logo} alt="logo" className="w-36" />
           <span className="text-xs">
-            <Link to="/my-profile">
+            <Link to="/edit-profile">
               <FontAwesomeIcon icon={faUser} className="text-lg" />
             </Link>
           </span>
