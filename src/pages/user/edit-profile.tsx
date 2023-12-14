@@ -16,6 +16,7 @@ const EDIT_PROFILE_MUTATION = gql`
 interface IFormProps {
   email?: string;
   password?: string;
+  confirm_password: string;
 }
 
 function EditProfile() {
@@ -89,7 +90,6 @@ function EditProfile() {
         )}
         <input
           {...register("password", {
-            required: "Password is required",
             minLength: 8,
           })}
           name="password"
@@ -100,6 +100,25 @@ function EditProfile() {
         {formState.errors.password?.type === "minLength" && (
           <span className="text-red-600 font-medium mt-2">
             Password must be more than 8 characters
+          </span>
+        )}
+        <input
+          {...register("confirm_password", {
+            minLength: 8,
+            validate: (value) => {
+              if (value !== getValues("password")) {
+                return "Password confirmation doesn't match";
+              }
+            },
+          })}
+          name="confirm_password"
+          type="password"
+          placeholder="Password"
+          className="input"
+        />
+        {formState.errors.confirm_password && (
+          <span className="text-red-600 font-medium mt-2">
+            {formState.errors.confirm_password?.message}
           </span>
         )}
         <Button
