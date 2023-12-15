@@ -7,19 +7,11 @@ import {
   faPersonBiking,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { UserRole } from "../__generated__/globalTypes";
 
-const matchIcon = (icon: string) => {
-  switch (icon) {
-    case "Client":
-      return faUser;
-    case "Owner":
-      return faUtensils;
-    case "Delivery":
-      return faPersonBiking;
-    default:
-      return faUser;
-  }
+const iconMap = {
+  Client: faUser,
+  Owner: faUtensils,
+  Delivery: faPersonBiking,
 };
 
 function Header() {
@@ -41,7 +33,7 @@ function Header() {
           <Link to="/edit-profile">
             <div className="text-xs flex gap-2 items-center bg-rose-500 rounded py-2 px-4">
               <FontAwesomeIcon
-                icon={matchIcon(data?.me.role || "Client")}
+                icon={iconMap[data?.me.role || "Client"]}
                 className="text-lg text-white"
               />
               <span className="text-rose-100">{data?.me.email}</span>
