@@ -29,7 +29,6 @@ export const CreateAccount = () => {
 
   const { register, getValues, handleSubmit, formState } =
     useForm<ICreateAccountForm>({
-      mode: "onChange",
       defaultValues: {
         role: UserRole.Client,
       },
@@ -41,12 +40,12 @@ export const CreateAccount = () => {
     }
   };
 
-  const [createAccountMutation, { loading, data }] = useMutation<
-    createAccountMutation,
-    createAccountMutationVariables
-  >(CREATE_ACCOUNT_MUTATION, {
-    onCompleted,
-  });
+  const [createAccountMutation, { loading, data }] = useMutation(
+    CREATE_ACCOUNT_MUTATION,
+    {
+      onCompleted,
+    }
+  );
 
   const onSubmit = () => {
     if (!loading) {

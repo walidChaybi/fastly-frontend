@@ -3,11 +3,6 @@ import CreateAccount from "../pages/create-account";
 import Login from "../pages/login";
 import NotFound from "../pages/404";
 
-interface IForm {
-  email: string;
-  password: string;
-}
-
 export const LoggedOutRouter = () => {
   return (
     <Router>

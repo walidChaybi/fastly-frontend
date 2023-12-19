@@ -30,9 +30,9 @@ function Login() {
     const {
       login: { ok, token },
     } = data;
-    if (ok) {
-      localStorage.setItem(LOCALSTORAGE_TOKEN, token!);
-      authToken(token!);
+    if (ok && token) {
+      localStorage.setItem(LOCALSTORAGE_TOKEN, token);
+      authToken(token);
       isLoggedInVar(true);
     }
   };

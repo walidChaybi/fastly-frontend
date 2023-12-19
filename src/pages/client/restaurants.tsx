@@ -3,6 +3,7 @@ import {
   restaurantsPageQuery,
   restaurantsPageQueryVariables,
 } from "../../__generated__/restaurantsPageQuery";
+import "./restaurants.css"; // Import the CSS file
 
 const RESTAURANTS_QUERY = gql`
   query restaurantsPageQuery($input: RestaurantsInput!) {
@@ -47,10 +48,15 @@ function Restaurants() {
       },
     },
   });
-  console.log(data);
   return (
-    <div className=" max-w-7xl mx-auto bg-primary mt-12 text-secondary">
-      &larr; Restaurants
+    <div className="restaurants-container">
+      <form className="search-form w-full py-40 mx-auto bg-primary text-secondary flex items-center justify-center">
+        <input
+          type="search"
+          className="search-input w-5/12 px-5 py-3 border-2 border-slate-950 rounded-md focus:outline-none text-slate-950 font-bold transition-colors duration-200 ease-in-out"
+          placeholder="Search Restaurants..."
+        />
+      </form>
     </div>
   );
 }

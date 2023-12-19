@@ -31,12 +31,12 @@ function Header() {
             <img src={logo} alt="logo" className="w-36" />
           </Link>
           <Link to="/edit-profile">
-            <div className="text-xs flex gap-2 items-center bg-rose-500 rounded py-2 px-4">
+            <div className="text-xs flex gap-2 items-center bg-primary text-slate-900 rounded py-2 px-4">
               <FontAwesomeIcon
                 icon={iconMap[data?.me.role || "Client"]}
-                className="text-lg text-white"
+                className="text-lg "
               />
-              <span className="text-rose-100">{data?.me.email}</span>
+              <span className="text-slate-900">{data?.me.email}</span>
             </div>
           </Link>
         </div>
