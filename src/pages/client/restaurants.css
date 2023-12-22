@@ -1,4 +1,5 @@
 .restaurants-container {
+  width: 100%;
   animation: fadeIn 1s ease-in-out;
   background-image: url("path-to-your-christmas-food-background.jpg");
   background-size: cover;

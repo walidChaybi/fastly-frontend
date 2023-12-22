@@ -3,14 +3,11 @@ import logo from "../assets/logo.png";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
-import {
-  createAccountMutation,
-  createAccountMutationVariables,
-} from "../__generated__/createAccountMutation";
+
 import { UserRole } from "../__generated__/globalTypes";
 
 export const CREATE_ACCOUNT_MUTATION = gql`
-  mutation createAccountMutation($createAccountInput: CreateAccountInput!) {
+  mutation ($createAccountInput: CreateAccountInput!) {
     createAccount(input: $createAccountInput) {
       ok
       error
@@ -34,7 +31,7 @@ export const CreateAccount = () => {
       },
     });
 
-  const onCompleted = (data: createAccountMutation) => {
+  const onCompleted = (data) => {
     if (data.createAccount.ok) {
       navigate("/");
     }

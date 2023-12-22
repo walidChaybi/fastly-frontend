@@ -16,12 +16,16 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  return {
-    headers: {
-      ...headers,
-      "x-jwt": token || "",
-    },
-  };
+  return isLoggedInVar()
+    ? {
+        headers: {
+          ...headers,
+          "x-jwt": authToken() || "",
+        },
+      }
+    : {
+        headers,
+      };
 });
 
 export const client = new ApolloClient({
